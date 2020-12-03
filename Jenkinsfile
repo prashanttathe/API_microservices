@@ -1,16 +1,33 @@
 pipeline {
-    agent any
-    stages {
-        stage('reference-pipeline') {
-            steps {
-	       sh "rm -rf sample-app"
-	       sh "git clone https://github.com/mrganeshkudale/sample-app.git"
-	       sh "az login --identity"
-               sh "az acr build -r tntaksreg -t myngnix ."
-               sh "az account set --subscription aafef7b4-6886-45b4-afeb-2556fc54b425"
-               sh "az aks get-credentials --resource-group atos-tra-pla-rg --name atos-tra-pla-cluster"
-               sh "kubectl apply -f development.yml"
-            }
-        }
-    }
+	environment {
+    		def APP_NAME = "api"
+    		def GIT_REPO_NAME = "prashanttathe"
+    		def DEPLOY_ENV = "dev"
+	}
+    	agent any
+    	stages {
+		stage('Code Checkout') {
+			steps {
+				sh "if [ -d ${APP_NAME} ]; then rm -rf ${APP_NAME}; fi"
+				sh "git clone https://github.com/${GIT_REPO_NAME}/${APP_NAME}.git"
+			}
+		}
+		stage('Azure Cloud Connect'){
+			steps {
+				sh "az login --identity"
+				sh "az account set --subscription aafef7b4-6886-45b4-afeb-2556fc54b425"
+				sh "az aks get-credentials --resource-group atos-tra-pla-rg --name atos-tra-pla-cluster"			
+			}
+		}
+		stage('Build & Image'){
+			steps {
+				sh "cd ${APP_NAME} && az acr build -r tntaksreg -t ${APP_NAME} ."			
+			}
+		}
+		stage('Deploy'){
+			steps {
+				sh "kubectl apply -f ${APP_NAME}/${DEPLOY_ENV}.yml --namespace=${DEPLOY_ENV}"		
+			}
+		}
+    	}
 }
