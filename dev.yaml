@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: petclinic-rest
-        image: docker.io/mrganeshkudale/petclinic:rest
+        image: tntaksreg.azurecr.io/:rest
 q       ports:
         - containerPort: 8080
 ---
