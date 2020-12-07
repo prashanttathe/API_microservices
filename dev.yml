@@ -17,7 +17,7 @@ spec:
       containers:
       - name: petclinic-rest
         image: tntaksreg.azurecr.io/:rest
-       ports:
+        ports:
         - containerPort: 8080
 ---
 apiVersion: v1
