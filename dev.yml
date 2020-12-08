@@ -1,10 +1,9 @@
 apiVersion: apps/v1
+---
 kind: Deployment
 metadata:
   name: api
   namespace: dev
-  labels:
-    app: api
 spec:
   replicas: 1
   selector:
@@ -17,7 +16,7 @@ spec:
     spec:
       containers:
       - name: api
-        image: tntaksreg.azurecr.io/api
+        image: tntaksreg.azurecr.io/api:latest
         ports:
         - containerPort: 8080
         
@@ -30,8 +29,7 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    app: ui
-    tier: frontend
+    app: api
   ports:
     - protocol: TCP
       port: 80
