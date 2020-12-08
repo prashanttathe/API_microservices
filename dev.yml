@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: petclinic-rest
+  name: api
   labels:
-    app: petclinic-rest
+    app: api
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: petclinic-rest
+      app: api
   template:
     metadata:
       labels:
-        app: petclinic-rest
+        app: api
     spec:
       containers:
-      - name: petclinic-rest
-        image: tntaksreg.azurecr.io/petclinic-rest:latest
+      - name: api
+        image: tntaksreg.azurecr.io/api
         ports:
         - containerPort: 9966
         
@@ -24,7 +24,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: petclinic-rest-service
+  name: api-service
 spec:
   type: ClusterIP
   selector:
@@ -38,15 +38,15 @@ spec:
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: petclinic-rest-ingress
+  name: api-ingress
   annotations:
     kubernetes.io/ingress.class: addon-http-application-routing
 spec:
   rules:
-  - host: petclinic-rest.e46708b92c054086909b.eastus.aksapp.io
+  - host: api.e46708b92c054086909b.eastus.aksapp.io
     http:
       paths:
       - backend:
-          serviceName: petclinic-rest-service
+          serviceName: api-service
           servicePort: 80
         path: /
