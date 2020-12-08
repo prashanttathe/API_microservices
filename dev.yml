@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: petclinic-rest
-        image: tntaksreg.azurecr.io/:rest
+        image: tntaksreg.azurecr.io/petclinic-rest:latest
         ports:
         - containerPort: 9966
         
