@@ -1,0 +1,50 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ui-deployment
+  namespace: dev
+spec:
+  selector:
+    matchLabels:
+      app: ui-deployment
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: ui-deployment
+    spec:
+      containers:
+      - name: pods-ui-deployment
+        image: tntaksreg.azurecr.io/ui
+        imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: ui-service
+    namespace: dev
+spec:
+  selector:
+    app: ui-deployment
+  type: ClusterIP
+  ports:
+    - protocol: TCP
+      port: 80
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: ui-ingress
+  namespace: dev
+  annotations:
+    kubernetes.io/ingress.class: addon-http-application-routing
+spec:
+  rules:
+  - host: ui.e46708b92c054086909b.eastus.aksapp.io
+    http:
+      paths:
+      - backend:
+          serviceName: ui-service
+          servicePort: 80
+        path: /
