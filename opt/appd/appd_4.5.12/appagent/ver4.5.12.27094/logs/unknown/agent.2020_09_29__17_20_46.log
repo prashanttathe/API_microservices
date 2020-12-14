@@ -1,4 +1,0 @@
-[Thread-0] 29 Sep 2020 17:20:46,958  INFO JavaAgent - Logging set up for log4j2
-[Thread-0] 29 Sep 2020 17:20:46,958 ERROR JavaAgent - *******************
-[Thread-0] 29 Sep 2020 17:20:46,959 ERROR JavaAgent - *  Unable to determine Tier Name or Node Name. Java Agent disabled
-[Thread-0] 29 Sep 2020 17:20:46,959 ERROR JavaAgent - *******************
