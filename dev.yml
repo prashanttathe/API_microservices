@@ -2,31 +2,31 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: api-deployment
+  name: ui-deployment
   namespace: dev
 spec:
   selector:
     matchLabels:
-      app: api-deployment
+      app: ui-deployment
   replicas: 2
   template:
     metadata:
       labels:
-        app: api-deployment
+        app: ui-deployment
     spec:
       containers:
-      - name: pods-api-deployment
-        image: tntaksreg.azurecr.io/api
+      - name: pods-ui-deployment
+        image: tntaksreg.azurecr.io/ui
         imagePullPolicy: Always
 ---
 apiVersion: v1
 kind: Service
 metadata:
-    name: api-service
+    name: ui-service
     namespace: dev
 spec:
   selector:
-    app: api-deployment
+    app: ui-deployment
   type: ClusterIP
   ports:
     - protocol: TCP
@@ -35,16 +35,16 @@ spec:
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: api-ingress
+  name: ui-ingress
   namespace: dev
   annotations:
     kubernetes.io/ingress.class: addon-http-application-routing
 spec:
   rules:
-  - host: api.e46708b92c054086909b.eastus.aksapp.io
+  - host: ui.e46708b92c054086909b.eastus.aksapp.io
     http:
       paths:
       - backend:
-          serviceName: api-service
+          serviceName: ui-service
           servicePort: 80
         path: /
