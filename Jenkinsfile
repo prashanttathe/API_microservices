@@ -32,7 +32,7 @@ pipeline {
     	}	
         post { 	
     		success { 	
-    		    echo "Your application URL will be - ${APP_NAME}.e46708b92c054086909b.eastus.aksapp.io"	
+    		    echo "Your application URL will be - http://${APP_NAME}.e46708b92c054086909b.eastus.aksapp.io"	
     		}	
     		failure { 	
     		    echo "Please check logs for more details."	
