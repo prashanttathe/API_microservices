@@ -21,7 +21,7 @@ pipeline {
 		}	
 		stage('Build & Image'){	
 			steps {	
-				sh "cd ${APP_NAME} && mvn clean install && az acr build -r tntaksreg -t ${APP_NAME} ."				
+				sh "az acr build -r tntaksreg -t ${APP_NAME} ."				
 			}	
 		}	
 		stage('Deploy'){	
