@@ -21,7 +21,7 @@ pipeline {
 		}	
 		stage('Build & Image'){	
 			steps {	
-				sh "az acr build -r tntaksreg -t ${APP_NAME} ."				
+				sh "cd ${APP_NAME} && mvn clean install && az acr build -r tntaksreg -t ${APP_NAME} ."				
 			}	
 		}	
 		stage('Deploy'){	
@@ -32,7 +32,7 @@ pipeline {
     	}	
         post { 	
     		success { 	
-    		    echo "Your application URL will be - http://${APP_NAME}.e46708b92c054086909b.eastus.aksapp.io"	
+    		    echo "Your application URL will be - ${APP_NAME}.e46708b92c054086909b.eastus.aksapp.io"	
     		}	
     		failure { 	
     		    echo "Please check logs for more details."	
