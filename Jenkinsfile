@@ -1,6 +1,6 @@
 pipeline {	
 	environment {	
-    		def APP_NAME = "petclinic-api"	
+    		def APP_NAME = "petclinicapi"	
     		def GIT_REPO_NAME = "prashanttathe"	
     		def DEPLOY_ENV = "dev"	
 	}	
@@ -21,7 +21,7 @@ pipeline {
 		}	
 		stage('Build & Image'){	
 			steps {	
-				sh "cd ${APP_NAME} && mvn clean install && az acr build -r tntaksreg -t ${APP_NAME} ."				
+				sh "cd ${APP_NAME} && mvn clean install && mvn spring-boot:run && az acr build -r tntaksreg -t ${APP_NAME}"				
 			}	
 		}	
 		stage('Deploy'){	
