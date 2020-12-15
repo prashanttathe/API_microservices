@@ -2,21 +2,21 @@
 apiVersion: apps/v1	
 kind: Deployment	
 metadata:	
-  name: api	
+  name: petclinic-api-deployment	
   namespace: dev	
 spec:	
   replicas: 1	
   selector:	
     matchLabels:	
-      app: api	
+      app: petclinic-api	
   template:	
     metadata:	
       labels:	
-        app: api	
+        app: petclinic-api	
     spec:	
       containers:	
-      - name: api	
-        image: tntaksreg.azurecr.io/api:latest	
+      - name: petclinic-api	
+        image: tntaksreg.azurecr.io/petclinic-api:latest	
         ports:	
         - containerPort: 9966	
 
@@ -24,12 +24,12 @@ spec:
 apiVersion: v1	
 kind: Service	
 metadata:	
-  name: api-service	
+  name: petclinic-api-service	
   namespace: dev	
 spec:	
   type: ClusterIP	
   selector:	
-    app: api	
+    app: petclinic-api	
   ports:	
     - protocol: TCP	
       port: 80	
@@ -39,7 +39,7 @@ spec:
 apiVersion: networking.k8s.io/v1beta1	
 kind: Ingress	
 metadata:	
-  name: api-ingress	
+  name: petclinic-api-ingress	
   namespace: dev	
   annotations:	
     kubernetes.io/ingress.class: addon-http-application-routing	
@@ -49,6 +49,6 @@ spec:
     http:	
       paths:	
       - backend:	
-          serviceName: api-service	
+          serviceName: petclinic-api-service	
           servicePort: 9966
         path: /
