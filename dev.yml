@@ -50,5 +50,5 @@ spec:
       paths:	
       - backend:	
           serviceName: petclinicapi-service	
-          servicePort: 9966
+          servicePort: 80
         path: /
