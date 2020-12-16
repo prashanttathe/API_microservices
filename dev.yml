@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: petclinicapi-deployment
+  name: petclinicapi
   namespace: dev
 spec:
   replicas: 1
@@ -12,10 +12,10 @@ spec:
   template:
     metadata:
       labels:
-        app: petclinicapi-deployment
+        app: petclinicapi
     spec:
       containers:	
-      - name: petclinicapi
+      - name: petclinicapi-deployment
         image: tntaksreg.azurecr.io/petclinicapi:latest
         ports:
         - containerPort: 9966
