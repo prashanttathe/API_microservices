@@ -62,8 +62,8 @@ bootJar {
     mainClassName = 'src.main.java.org.springframework.samples.petclinic.PetClinicApplication'
 }
 group = 'org.springframework.samples'
-version = '2.2.5'
-description = 'spring-petclinic-rest'
+version = ''
+description = 'petclinicapi'
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 tasks.withType(JavaCompile) {
