@@ -9,7 +9,7 @@ pipeline {
 		stage('Code Checkout') {	
 			steps {	
 				sh "if [ -d ${APP_NAME} ]; then rm -rf ${APP_NAME}; fi"	
-				sh "git clone https://github.com/${GIT_REPO_NAME}/${APP_NAME}.git"	
+				sh "git clone --single-branch --branch prashant https://github.com/${GIT_REPO_NAME}/${APP_NAME}.git"	
 			}	
 		}	
 		stage('Azure Cloud Connect'){	
@@ -21,12 +21,13 @@ pipeline {
 		}	
 		stage('Build & Image'){	
 			steps {	
-				sh "cd ${APP_NAME} && mvn clean install && az acr build -r tntaksreg -t ${APP_NAME} ."				
+				sh "cd ${APP_NAME} && gradle wrapper && ./gradlew build && az acr build -r tntaksreg -t ${APP_NAME} ."				
 			}	
 		}	
 		stage('Deploy'){	
 			steps {	
-				sh "kubectl apply -f ${APP_NAME}/${DEPLOY_ENV}.yml --namespace=${DEPLOY_ENV}"			
+                                sh "kubectl delete deployment ${APP_NAME}-deployment --namespace=${DEPLOY_ENV}"
+			        sh "kubectl apply -f ${APP_NAME}/${DEPLOY_ENV}.yml --namespace=${DEPLOY_ENV}"			
 			}	
 		}	
     	}	

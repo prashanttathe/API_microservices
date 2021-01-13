@@ -1,5 +1,5 @@
 FROM openjdk:8-jdk-alpine
-ARG JAR_FILE=target/*.jar
+ARG JAR_FILE=build/libs/*.jar
 COPY ${JAR_FILE} petclinicapi.jar
 #CMD cp -r /opt /
 #CMD set UNIQUE_HOST_ID=`grep -i 'systemd' /proc/self/cgroup | grep -oE '[^/]+$' | cut -c 1-12`
