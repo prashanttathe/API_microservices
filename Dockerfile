@@ -1,6 +1,6 @@
 FROM openjdk:8-jdk-alpine
 ARG JAR_FILE=./build/libs/*.jar
-COPY ${JAR_FILE} petclinicapi.jar
+COPY ${JAR_FILE} spring-petclinic-rest-2.2.5.jar
 #CMD cp -r /opt /
 #CMD set UNIQUE_HOST_ID=`grep -i 'systemd' /proc/self/cgroup | grep -oE '[^/]+$' | cut -c 1-12`
 #CMD set JAVA_OPTS="-javaagent:/opt/appd/appd_4.5.12/appagent/javaagent.jar -Dappdynamics.agent.uniqueHostId=$UNIQUE_HOST_ID"
