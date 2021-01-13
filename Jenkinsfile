@@ -21,7 +21,7 @@ pipeline {
 		}	
 		stage('Build & Image'){	
 			steps {	
-				sh "cd ${APP_NAME} && gradle build && az acr build -r tntaksreg -t ${APP_NAME} ."				
+				sh "cd ${APP_NAME} && mvn clean install && az acr build -r tntaksreg -t ${APP_NAME} ."				
 			}	
 		}	
 		stage('Deploy'){	
