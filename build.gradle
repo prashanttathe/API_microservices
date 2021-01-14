@@ -60,7 +60,7 @@ dependencies {
     testImplementation 'io.cucumber:cucumber-spring:4.7.0'
 }
 bootJar {
-    mainClassName = 'src.main.java.org.springframework.samples.petclinic.PetClinicApplication'
+    launchScript()
 }
 group = 'org.springframework.samples'
 version = ''
