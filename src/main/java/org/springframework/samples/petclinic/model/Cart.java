@@ -6,12 +6,12 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Product {
-	
+public class Cart {
 	@Id
 	private Integer id;
 	private String name;	
 	private BigDecimal amount;
+	private Integer quantity;
 	private String currency;
 	public Integer getId() {
 		return id;
@@ -31,16 +31,18 @@ public class Product {
 	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
 	}
+	public Integer getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
 	public String getCurrency() {
 		return currency;
 	}
 	public void setCurrency(String currency) {
 		this.currency = currency;
 	}
-	
-	
-	
-	
 	
 	
 }

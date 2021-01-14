@@ -57,3 +57,9 @@ INSERT INTO users(username,password,enabled) VALUES ('admin','{noop}admin', true
 INSERT INTO roles (username, role) VALUES ('admin', 'ROLE_OWNER_ADMIN');
 INSERT INTO roles (username, role) VALUES ('admin', 'ROLE_VET_ADMIN');
 INSERT INTO roles (username, role) VALUES ('admin', 'ROLE_ADMIN');
+
+INSERT INTO Product (id,name,amount,currency) VALUES (1, 'Kennel Kitchen','635','$');
+INSERT INTO Product (id,name,amount,currency) VALUES (2, 'Velcote Liquid','318','$');
+INSERT INTO Product (id,name,amount,currency) VALUES (3, 'Pedigree PRO','923','$');
+INSERT INTO Product (id,name,amount,currency) VALUES (4, 'Velcote Liquid','318','$');
+
