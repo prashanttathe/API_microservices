@@ -20,11 +20,10 @@ public class OnlineShopController {
 @Autowired
 private OnlineShopServiceImpl onlineShopServiceImpl;
 
-	@PreAuthorize( "hasRole(@roles.ADMIN)" )
-	@GetMapping
+	//@PreAuthorize( "hasRole(@roles.ADMIN)" )
+	@GetMapping("/getproducts")
 	public ResponseEntity<List<Product>> getProducts(){
 		return onlineShopServiceImpl.getProducts();
-
 	}
 
 }
