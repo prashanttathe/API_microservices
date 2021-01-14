@@ -1,4 +1,9 @@
-FROM openjdk:8-jdk-alpine
+FROM alpine:edge
+USER root
+
+RUN apk add openjdk11 
+RUN java --version
+
 ARG JAR_FILE=build/libs/*.jar
 COPY ${JAR_FILE} petclinicapi.jar
 #CMD cp -r /opt /
