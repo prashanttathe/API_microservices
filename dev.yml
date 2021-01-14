@@ -8,11 +8,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: petclinicapi
+      app: petclinicapi-deployment
   template:
     metadata:
       labels:
-        app: petclinicapi
+        app: petclinicapi-deployment
     spec:
       containers:	
       - name: petclinicapi-deployment
