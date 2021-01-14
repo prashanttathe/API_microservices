@@ -61,5 +61,10 @@ INSERT INTO roles (username, role) VALUES ('admin', 'ROLE_ADMIN');
 INSERT INTO Product (id,name,amount,currency) VALUES (1, 'Kennel Kitchen','635','$');
 INSERT INTO Product (id,name,amount,currency) VALUES (2, 'Velcote Liquid','318','$');
 INSERT INTO Product (id,name,amount,currency) VALUES (3, 'Pedigree PRO','923','$');
-INSERT INTO Product (id,name,amount,currency) VALUES (4, 'Velcote Liquid','318','$');
+INSERT INTO Product (id,name,amount,currency) VALUES (4, 'Velcote Premium','318','$');
+
+INSERT INTO Product (id,name,amount,currency) VALUES (5, 'Mantra Kismis','63','$');
+INSERT INTO Product (id,name,amount,currency) VALUES (6, 'Haldiram Noodles','320','$');
+INSERT INTO Product (id,name,amount,currency) VALUES (7, 'Bingo Mad Angles ','912','$');
+INSERT INTO Product (id,name,amount,currency) VALUES (8, 'Bikani Rasogolla','318','$');
 
