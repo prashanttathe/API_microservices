@@ -9,7 +9,7 @@ pipeline {
 		stage('Code Checkout') {	
 			steps {	
 				sh "if [ -d ${APP_NAME} ]; then rm -rf ${APP_NAME}; fi"	
-				sh "git clone --single-branch --branch main https://github.com/${GIT_REPO_NAME}/${APP_NAME}.git"	
+				sh "git clone --single-branch --branch QE https://github.com/${GIT_REPO_NAME}/${APP_NAME}.git"	
 			}	
 		}	
 		stage('Azure Cloud Connect'){	
@@ -26,7 +26,7 @@ pipeline {
 		}	
 		stage('Deploy'){	
 			steps {	
-                                //sh "kubectl delete deployment ${APP_NAME}-deployment --namespace=${DEPLOY_ENV}"
+                                sh "kubectl delete deployment ${APP_NAME}-deployment --namespace=${DEPLOY_ENV}"
 			        sh "kubectl apply -f ${APP_NAME}/${DEPLOY_ENV}.yml --namespace=${DEPLOY_ENV}"			
 			}	
 		}	
